@@ -6,4 +6,4 @@ RUN apt install -y git
 WORKDIR /jitsi-meet-torture
 RUN git clone https://github.com/jitsi/jitsi-meet-torture .
 
-ENTRYPOINT ["./scripts/malleus.sh", "--use-load-test"]
+ENTRYPOINT ["./scripts/malleus.sh", "--debug"]
