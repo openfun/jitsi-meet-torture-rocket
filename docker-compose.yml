@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-zirconium
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+  selenium-node:
+    image: selenium/node-chrome:3.141.59-zirconium
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      HUB_HOST: "selenium-hub"
+  jitsi-torture:
+    build: .
+    container_name: jitsi-torture
+    depends_on:
+      - selenium-hub
+    environment:
+      REMOTE_RESOURCE_PATH: "/jitsi-meet-torture/resources"
+    env_file:
+      - .env
