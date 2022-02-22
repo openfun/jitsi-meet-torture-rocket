@@ -9,4 +9,4 @@ RUN git clone https://github.com/jitsi/jitsi-meet-torture .
 ENV SELENIUM_HUB "selenium-hub"
 ENV SELENIUM_PORT "4444"
 
-ENTRYPOINT ./scripts/malleus.sh --hub-url="http://$SELENIUM_HUB:$SELENIUM_PORT/wd/hub"
+ENTRYPOINT ["./scripts/malleus.sh", "--hub-url='http://$SELENIUM_HUB:$SELENIUM_PORT/wd/hub'"]
