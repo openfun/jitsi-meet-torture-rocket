@@ -33,7 +33,7 @@ docker-compose up
     --build
 ```
 
-Scale selenium nodes as needed for the test.
+Scale selenium nodes as needed for the test. The number of selenium nodes must be equal or greater than number of participants.
 
 To see logs of the test, 
 
