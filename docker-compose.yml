@@ -10,6 +10,7 @@ services:
     image: selenium/node-chrome:3.141.59-zirconium
     volumes:
       - /dev/shm:/dev/shm
+      - ./resources:/usr/share/jitsi-meet-torture/resources
     depends_on:
       - selenium-hub
     environment:
@@ -19,8 +20,6 @@ services:
     container_name: jitsi-torture
     depends_on:
       - selenium-hub
-    environment:
-      REMOTE_RESOURCE_PATH: "/jitsi-meet-torture/resources"
     env_file:
       - .env
   # selenium-exporter:
