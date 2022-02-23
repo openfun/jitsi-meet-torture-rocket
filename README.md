@@ -27,10 +27,7 @@ Before running the hub, you must create a `.env` file. It is recommended to copy
 To run with docker-compose, 
 
 ```shell
-docker-compose up
-    -d
-    --scale selenium-node=5
-    --build
+docker-compose up -d --scale selenium-node=5 --build
 ```
 
 Scale selenium nodes as needed for the test. The number of selenium nodes must be equal or greater than number of participants.
