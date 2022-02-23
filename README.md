@@ -42,3 +42,16 @@ docker logs -f jitsi-torture
 ```
 
 Don't forget to run `docker-compose down` when done testing.
+
+## Monitoring (with Prometheus)
+
+A Prometheus exporter may be used to monitor the Selenium hub and expose some metrics:
+
+Name | Description
+--- | ---
+`selenium_grid_hub_sessions_backlog`|number of waiting sessions
+`selenium_grid_hub_slotsFree`|number of free nodes
+`selenium_grid_hub_slotsTotal`|total number of nodes
+`selenium_grid_up`|boolean that indicates if the hub is up
+
+To enable it, just uncomment the corresponding lines in the docker-compose file. Metrics are exported on port `8080` and on path `/metrics`.

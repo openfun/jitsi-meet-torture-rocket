@@ -23,3 +23,12 @@ services:
       REMOTE_RESOURCE_PATH: "/jitsi-meet-torture/resources"
     env_file:
       - .env
+  # selenium-exporter:
+  #   image: wakeful/selenium-grid-exporter
+  #   container_name: selenium-exporter
+  #   ports:
+  #     - "8080:8080"
+  #   entrypoint: 
+  #     - /selenium_grid_exporter 
+  #     - -scrape-uri=http://selenium-hub:4444 
+  #     - -telemetry-path=/metrics
