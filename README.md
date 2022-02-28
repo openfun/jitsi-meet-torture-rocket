@@ -20,11 +20,11 @@ $ docker-compose --version
 
 ### Environment variables
 
-Before running the hub, you must create a `.env` file. It is recommended to copy `.env.template` file with `cp .env.template .env`, and then modify the variables as needed.
+Before running the hub, you must create a `.env` file. It is recommended to copy the `docker/.env.template` file with `cp docker/.env.template docker/.env`, and then modify the variables as needed.
 
 ### Run
 
-To run with docker-compose, 
+To run Jitsi Meet Torture with docker-compose, enter in the `docker` directory and launch: 
 
 ```shell
 docker-compose up -d --scale selenium-node=5 --build
