@@ -1,1 +1,3 @@
 docker/.env
+env.d/terraform
+terraform/.terraform
