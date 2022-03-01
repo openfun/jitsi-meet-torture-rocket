@@ -17,6 +17,12 @@ resource "scaleway_instance_server" "jmt_instance" {
   type  = var.jmt_instance_size
   image = data.scaleway_instance_image.jmt_image.id
   ip_id = scaleway_instance_ip.jmt_ip[count.index].id
+
+  # Configuration options of the instance with cloud-init
+  # are described on https://cloudinit.readthedocs.io/en/latest
+  user_data = {
+    cloud-init = file("${path.module}/cloud-init.sh")
+  }
 }
 
 # We print the IP addresses of JMT instances
