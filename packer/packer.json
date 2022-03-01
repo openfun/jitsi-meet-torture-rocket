@@ -1,0 +1,28 @@
+{
+    "builders": [
+        {
+            "server_name": "jmt-temporary-build",
+            "image_name": "jmt-image",
+            "snapshot_name": "jmt-snapshot",
+            "type": "scaleway",
+            "image": "debian_bullseye",
+            "zone": "fr-par-1",
+            "commercial_type": "DEV1-S",
+            "ssh_private_key_file": "/app/.ssh/id_ed25519",
+            "ssh_username": "root"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "/app/install.sh",
+            "destination": "/tmp/install.sh"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "/tmp/install.sh"
+            ]
+        }
+    ]
+}

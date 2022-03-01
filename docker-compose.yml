@@ -2,13 +2,13 @@ version: '3.4'
 
 services:
 
-  # terraform-state:
-  #   image: hashicorp/terraform:0.15.3
-  #   env_file: env.d/terraform
-  #   user: ${DOCKER_USER:-1000}
-  #   working_dir: /app
-  #   volumes:
-  #     - ./terraform/create_state_bucket:/app
+  packer:
+    image: hashicorp/packer:1.7.10
+    env_file: env.d/terraform
+    user: ${DOCKER_USER:-1000}
+    working_dir: /app
+    volumes:
+      - ./packer:/app
 
   terraform:
     image: hashicorp/terraform:0.15.3
