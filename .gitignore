@@ -1,4 +1,4 @@
 docker/.env
-env.d/terraform
+env
 packer/.ssh/id_ed25519
 terraform/.terraform
