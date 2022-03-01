@@ -19,6 +19,11 @@
             "destination": "/tmp/install.sh"
         },
         {
+            "type": "file",
+            "source": "/docker",
+            "destination": "/root/docker"
+        },
+        {
             "type": "shell",
             "inline": [
                 "/tmp/install.sh"

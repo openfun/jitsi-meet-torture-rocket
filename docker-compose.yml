@@ -9,6 +9,7 @@ services:
     working_dir: /app
     volumes:
       - ./packer:/app
+      - ./docker:/docker
 
   terraform:
     image: hashicorp/terraform:0.15.3
