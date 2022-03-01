@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-zirconium
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+  selenium-node:
+    image: selenium/node-chrome:3.141.59-zirconium
+    volumes:
+      - /dev/shm:/dev/shm
+      - ./resources:/usr/share/jitsi-meet-torture/resources
+    depends_on:
+      - selenium-hub
+    environment:
+      HUB_HOST: "selenium-hub"
+  jitsi-torture:
+    build: .
+    container_name: jitsi-torture
+    depends_on:
+      - selenium-hub
+    env_file:
+      - .env
+  # selenium-exporter:
+  #   image: wakeful/selenium-grid-exporter
+  #   container_name: selenium-exporter
+  #   ports:
+  #     - "8080:8080"
+  #   entrypoint: 
+  #     - /selenium_grid_exporter 
+  #     - -scrape-uri=http://selenium-hub:4444 
+  #     - -telemetry-path=/metrics

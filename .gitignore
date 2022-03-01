@@ -1,1 +1,4 @@
-.env
+docker/.env
+env.d/terraform
+packer/.ssh/id_ed25519
+terraform/.terraform
