@@ -16,6 +16,5 @@ mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 
 # Configure Jitsi-Meet-Torture
 cd /root/docker
-cp .env.template .env
 docker-compose build
 docker-compose pull
