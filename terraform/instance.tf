@@ -6,12 +6,12 @@ data "scaleway_instance_image" "jmt_image" {
 # We create one IP address for each instance that we will
 # deploy on Scaleway
 resource "scaleway_instance_ip" "jmt_ip" {
-  count = var.jmt_replicas
+  count = var.jmt_replicas_per_stack * var.jmt_stacks
 }
 
 # We create the JMT Scaleway instances
 resource "scaleway_instance_server" "jmt_instance" {
-  count = var.jmt_replicas
+  count = var.jmt_replicas_per_stack * var.jmt_stacks
 
   name  = "jmt-${count.index}"
   type  = var.jmt_instance_size
@@ -21,7 +21,10 @@ resource "scaleway_instance_server" "jmt_instance" {
   # Configuration options of the instance with cloud-init
   # are described on https://cloudinit.readthedocs.io/en/latest
   user_data = {
-    cloud-init = file("${path.module}/cloud-init.sh")
+    cloud-init = templatefile("${path.module}/cloud-init.sh", { 
+        stack = count.index % var.jmt_stacks
+        room_prefix = var.jmt_room_prefix
+    })
   }
 }
 
