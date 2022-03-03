@@ -4,7 +4,7 @@ variable "jmt_instance_size" {
 
   # Available sizes with their corresponding prices are described 
   # on https://www.scaleway.com/en/pricing/
-  default = "DEV1-M"
+  default = ""
 }
 
 variable "jmt_replicas_per_stack" {
