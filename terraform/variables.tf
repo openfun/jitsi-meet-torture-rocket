@@ -27,3 +27,10 @@ variable "jmt_room_prefix" {
 
   default = "scalingteam"
 }
+
+variable "jmt_selenium_nodes" {
+  type        = number
+  description = "The number of selenium nodes for the JMT tests"
+
+  default = 0
+}

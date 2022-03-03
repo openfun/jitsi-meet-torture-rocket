@@ -1,13 +1,13 @@
 include env
 export ${SECRET_GPG_PASSPHRASE}
-export ${IMAGE_COMMERCIAL_TYPE}
+export ${SCALEWAY_INSTANCE_TYPE}
 
 bootstrap: ## Bootstrap the Jitsi-Meet-torture project
 	cp env.dist env
 
-build: ## Build and deploy Jitsi-Meet-torture with the specified configuration
+build: ## Build the Jitsi-Meet-torture image with the specified configuration
 ifneq ($(wildcard ./docker/.env),)
-	./bin/packer build -var IMAGE_COMMERCIAL_TYPE=${IMAGE_COMMERCIAL_TYPE} packer.json
+	./bin/packer build -var SCALEWAY_INSTANCE_TYPE=${SCALEWAY_INSTANCE_TYPE} packer.json
 else 
 	@echo "ERROR : The file .env doesn't exist."
 endif
