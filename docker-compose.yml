@@ -4,7 +4,7 @@ services:
 
   packer:
     image: hashicorp/packer:1.7.10
-    env_file: env.d/env
+    env_file: ./env
     user: ${DOCKER_USER:-1000}
     working_dir: /app
     volumes:
@@ -13,7 +13,7 @@ services:
 
   terraform:
     image: hashicorp/terraform:0.15.3
-    env_file: env.d/env
+    env_file: ./env
     user: ${DOCKER_USER:-1000}
     working_dir: /app
     volumes:
