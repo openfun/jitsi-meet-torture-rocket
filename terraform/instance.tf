@@ -24,6 +24,7 @@ resource "scaleway_instance_server" "jmt_instance" {
     cloud-init = templatefile("${path.module}/cloud-init.sh", { 
         stack = count.index % var.jmt_stacks
         room_prefix = var.jmt_room_prefix
+        selenium_nodes = var.jmt_selenium_nodes
     })
   }
 }
