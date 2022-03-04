@@ -16,29 +16,49 @@ $ docker-compose --version
   docker-compose version v2.2.3
 ```
 
-## Usage
+## Architecture
+
+This repository is composed of three parts:
+
+- A [Docker](https://www.docker.com) project which include the [Jitsi-Meet-Torture](https://github.com/jitsi/jitsi-meet-torture).
+
+- A [Packer](https://www.packer.io) project, whose goal is to build an image with docker and docker-compose on it.
+
+- A [Terraform](https://www.terraform.io/) project which deploys the docker project on the image, and launch the tests.
+
+We use [Scaleway](https://www.scaleway.com/) as the cloud provider.
+
+## Getting started
+
+### GPG secret key
+
+To use the Packer project, you will need an SSH key. There are two commands to manage encryption of the private key. We use [GnuPG](https://gnupg.org) for encryption.
+
+- Execute: ```make encrypt_key```to encrypt the secret key with the passphrase you specified as an environnement variable.
+- Execute: ```make decrypt_key```to decrypt the secret key from secrets.key.gpg.
 
 ### Environment variables
 
-Before running the hub, you must create a `.env` file. It is recommended to copy the `docker/.env.template` file with `cp docker/.env.template docker/.env`, and then modify the variables as needed.
+Before running the hub, you need to provide the required environnement variables to authentificate on Scaleway, provide the GPG key and the size of the tests you want to perform.
+
+You can initialize the `.env` file by executing the following command:
+
+```
+make bootstrap
+```
+
+Then, edit this file with your credentials and the values you want for the tests.
+
+- The number of selenium nodes depends on the size of the tests you want to perform.
+- According to this, you can use either bigger or smaller instance on Scaleway for the JMT image and the instance type.
 
 ### Run
 
-To run Jitsi Meet Torture with docker-compose, enter in the `docker` directory and launch: 
+To run the project, execute the following command:
 
-```shell
-docker-compose up -d --scale selenium-node=5 --build
 ```
-
-Scale selenium nodes as needed for the test. The number of selenium nodes must be equal or greater than number of participants.
-
-To see logs of the test, 
-
-```shell
-docker logs -f jitsi-torture
+make build
 ```
-
-Don't forget to run `docker-compose down` when done testing.
 
 ## Monitoring (with Prometheus)
 
