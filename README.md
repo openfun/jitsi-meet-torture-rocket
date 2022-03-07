@@ -1,6 +1,6 @@
 # jitsi-meet-torture-docker
 
-This repository aims at simplifying the use of jitsi-meet-torture, specifically for load testing. A selenium hub is created, so that multiple connections, with or without video/audio, can connect to given jitsi instance.
+This repository aims at simplifying the use of jitsi-meet-torture, specifically for load testing. A selenium hub is created, so that multiple connections, with or without video/audio, can be made to given jitsi instance.
 
 ## Prerequisite
 
@@ -27,13 +27,13 @@ $ scw init
 
 This repository is composed of three parts:
 
-- A [Docker](https://www.docker.com) project which include the [Jitsi-Meet-Torture](https://github.com/jitsi/jitsi-meet-torture).
+- A [Docker](https://www.docker.com) project to manipulate the [Jitsi-Meet-Torture](https://github.com/jitsi/jitsi-meet-torture) repository.
 
 - A [Packer](https://www.packer.io) project, whose goal is to build an image with docker and docker-compose on it.
 
-- A [Terraform](https://www.terraform.io/) project which deploys the docker project on the image, and launch the tests.
+- A [Terraform](https://www.terraform.io/) project which deploys the docker project on the image for multiple instances, and launches the tests.
 
-We use [Scaleway](https://www.scaleway.com/) as the cloud provider.
+We use [Scaleway](https://www.scaleway.com/) as the cloud provider, but PRs are welcome to add other cloud providers.
 
 ## Getting started
 
@@ -58,7 +58,7 @@ Then, edit this file with your credentials and the values you want for the tests
 
 - `TF_VAR_number_of_selenium_node` defines the number of selenium nodes which depends on the size of the tests you want to perform. One selenium node is equivalent to one participant in a conference.
 
-- `SCALEWAY_INSTANCE_TYPE` defines the size of the JMT image you want to use. You can use either bigger or smaller instance on Scaleway. A Dev-S size is equivalent to two participants.
+- `SCALEWAY_INSTANCE_TYPE` defines the size of the JMT image you want to use. You can use either bigger or smaller instances on Scaleway. A Dev-S size is equivalent to two participants.
 
 ### Run
 
