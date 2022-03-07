@@ -15,6 +15,13 @@ $ docker -v
 $ docker-compose --version
   docker-compose version v2.2.3
 ```
+To improve interaction with the Cloud provider and enable remote command line control over the image, make sure you have a recent version of [Scaleway CLI](https://github.com/scaleway/scaleway-cli):
+
+```
+$ brew install scw
+
+$ scw init
+```
 
 ## Architecture
 
@@ -49,8 +56,9 @@ make bootstrap
 
 Then, edit this file with your credentials and the values you want for the tests.
 
-- The number of selenium nodes depends on the size of the tests you want to perform.
-- According to this, you can use either bigger or smaller instance on Scaleway for the JMT image and the instance type.
+- `TF_VAR_number_of_selenium_node` defines the number of selenium nodes which depends on the size of the tests you want to perform. One selenium node is equivalent to one participant in a conference.
+
+- `SCALEWAY_INSTANCE_TYPE` defines the size of the JMT image you want to use. You can use either bigger or smaller instance on Scaleway. A Dev-S size is equivalent to two participants.
 
 ### Run
 
@@ -59,6 +67,8 @@ To run the project, execute the following command:
 ```
 make build
 ```
+
+This command makes sure the image you are trying to create isn't already created. If so, the image is deleted before building.
 
 ## Monitoring (with Prometheus)
 
@@ -72,3 +82,11 @@ Name | Description
 `selenium_grid_up`|boolean that indicates if the hub is up
 
 To enable it, just uncomment the corresponding lines in the docker-compose file. Metrics are exported on port `8080` and on path `/metrics`.
+
+## Cleaning
+
+If you want to delete the image and the snapshot created, you can execute the following command :
+
+```
+make destroy
+```
