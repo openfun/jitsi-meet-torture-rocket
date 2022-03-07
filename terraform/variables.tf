@@ -11,14 +11,14 @@ variable "jmt_replicas_per_stack" {
   type        = number
   description = "The number of JMT instances per stack to deploy"
 
-  default = 2
+  default = 5
 }
 
 variable "jmt_stacks" {
   type        = number
   description = "The number of stacks of JMT instances to deploy"
 
-  default = 2
+  default = 18
 }
 
 variable "jmt_room_prefix" {
