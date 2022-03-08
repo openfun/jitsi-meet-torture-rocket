@@ -14,6 +14,12 @@ ifneq ($(wildcard ./docker/.env),)
 else 
 	@echo "ERROR : The file .env doesn't exist."
 endif
+
+apply: ## Apply to terraform to deploy ressources and launch tests
+	terraform apply -parallelism=${TF_OPERATIONS_PARALLELISM}
+
+make destroy: ## Destroy terraform ressources that were created
+	terraform destroy -parallelism=${TF_OPERATIONS_PARALLELISM}
 	
 encrypt_key: ## Encrypt the secret key
 	gpg --symmetric --armor --batch --passphrase="${SECRET_GPG_PASSPHRASE}" --output packer/.ssh/secrets.key.gpg packer/.ssh/id_ed25519
