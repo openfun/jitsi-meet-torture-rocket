@@ -18,3 +18,8 @@ services:
     working_dir: /app
     volumes:
       - ./terraform:/app
+
+  scaleway-cli:
+    image: scaleway/cli
+    env_file: ./env
+    user: ${DOCKER_USER:-1000}

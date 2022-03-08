@@ -9,7 +9,8 @@
             "zone": "fr-par-1",
             "commercial_type": "{{user `SCALEWAY_INSTANCE_TYPE`}}",
             "ssh_private_key_file": "/app/.ssh/id_ed25519",
-            "ssh_username": "root"
+            "ssh_username": "root",
+            "remove_volume": true
         }
     ],
     "provisioners": [
