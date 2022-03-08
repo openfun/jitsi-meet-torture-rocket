@@ -25,6 +25,11 @@
             "destination": "/root/docker"
         },
         {
+            "type": "file",
+            "source": "/env.d/docker",
+            "destination": "/root/docker/.env"
+        },
+        {
             "type": "shell",
             "inline": [
                 "/tmp/install.sh"

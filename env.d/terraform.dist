@@ -1,0 +1,30 @@
+# Scaleway credentials
+SCW_ACCESS_KEY=
+SCW_SECRET_KEY=
+SCW_DEFAULT_PROJECT_ID=
+SCW_DEFAULT_ORGANIZATION_ID=
+
+# Credentials declaration for the s3 bucket backend
+AWS_ACCESS_KEY_ID=$SCW_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY=$SCW_SECRET_KEY
+
+# Passphrase for the private KEY
+SECRET_GPG_PASSPHRASE=
+
+# JMT instance variables to adapt to test
+# Each instance will serve exactly one conference, so NUMBER_PARTICIPANTS_PER_CONFERENCE should be greater than NUMBER_PARTICIPTANTS_PER_INSTANCE
+# Number of instances per conference will be equal to NUMBER_PARTICIPANTS_PER_CONFERENCE / NUMBER_PARTICIPTANTS_PER_INSTANCE, so beware the ceil operation to have an int
+SCALEWAY_INSTANCE_TYPE=DEV1-S
+NUMBER_CONFERENCES=2
+NUMBER_PARTICIPANTS_PER_CONFERENCE=4
+NUMBER_PARTICIPTANTS_PER_INSTANCE=2
+
+# Terraform JMT variables
+TF_VAR_jmt_instance_size=$SCALEWAY_INSTANCE_TYPE
+TF_VAR_jmt_conferences=$NUMBER_CONFERENCES
+TF_VAR_jmt_participants_per_conference=$NUMBER_PARTICIPANTS_PER_CONFERENCE
+TF_VAR_jmt_participants_per_instance=$NUMBER_PARTICIPTANTS_PER_INSTANCE
+
+# Terraform application variable. If you want to create all instances at the same time,
+# this should equal NUMBER_CONFERENCES * NUMBER_PARTICIPANTS_PER_CONFERENCE / NUMBER_PARTICIPTANTS_PER_INSTANCE
+TF_OPERATIONS_PARALLELISM=10

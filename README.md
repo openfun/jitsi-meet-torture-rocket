@@ -21,6 +21,7 @@ $ docker-compose --version
 This repository is composed of three parts:
 
 - A [Docker](https://www.docker.com) project to manipulate the [Jitsi-Meet-Torture](https://github.com/jitsi/jitsi-meet-torture) repository.
+Before running the hub, you must create an env file. It is recommended to copy the `env.d/docker.dist` file with `cp env.d/docker.dist env.d/docker`, and then modify the variables as needed.
 
 - A [Packer](https://www.packer.io) project, whose goal is to build an image with docker and docker-compose on it.
 

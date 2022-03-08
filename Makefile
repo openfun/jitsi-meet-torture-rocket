@@ -1,9 +1,8 @@
-include env
-export ${SECRET_GPG_PASSPHRASE}
-export ${SCALEWAY_INSTANCE_TYPE}
+include env.d/terraform
 
 bootstrap: ## Bootstrap the Jitsi-Meet-torture project
-	cp env.dist env
+	cp env.d/docker.dist env.d/docker
+	cp env.d/terraform.dist env.d/terraform
 
 build: ## Build the Jitsi-Meet-torture image with the specified configuration
 ifneq (${shell ./bin/scaleway-cli instance image list | grep jmt-image | cut -d " " -f1},)
@@ -12,14 +11,14 @@ endif
 ifneq ($(wildcard ./docker/.env),)
 	./bin/packer build -var SCALEWAY_INSTANCE_TYPE=${SCALEWAY_INSTANCE_TYPE} packer.json
 else 
-	@echo "ERROR : The file .env doesn't exist."
+	@echo "ERROR : The file env.d/docker doesn't exist."
 endif
 
 apply: ## Apply to terraform to deploy ressources and launch tests
-	terraform apply -parallelism=${TF_OPERATIONS_PARALLELISM}
+	./bin/terraform apply -parallelism=${TF_OPERATIONS_PARALLELISM}
 
-make destroy: ## Destroy terraform ressources that were created
-	terraform destroy -parallelism=${TF_OPERATIONS_PARALLELISM}
+destroy: ## Destroy terraform ressources that were created
+	./bin/terraform destroy -parallelism=${TF_OPERATIONS_PARALLELISM}
 	
 encrypt_key: ## Encrypt the secret key
 	gpg --symmetric --armor --batch --passphrase="${SECRET_GPG_PASSPHRASE}" --output packer/.ssh/secrets.key.gpg packer/.ssh/id_ed25519
