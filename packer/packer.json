@@ -26,8 +26,8 @@
         },
         {
             "type": "file",
-            "source": "/env.d/docker",
-            "destination": "/root/docker/.env"
+            "source": "/env.d",
+            "destination": "/root/env.d"
         },
         {
             "type": "shell",

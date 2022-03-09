@@ -42,7 +42,7 @@ To use the Packer project, you will need an SSH key. There are two commands to m
 
 Before running the hub, you need to provide the required environnement variables to authentificate on Scaleway, provide the GPG key and the size of the tests you want to perform.
 
-You can initialize the `.env` file by executing the following command:
+You can initialize the `.env.d/terraform` file by executing the following command:
 
 ```
 make bootstrap
