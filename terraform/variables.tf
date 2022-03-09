@@ -34,3 +34,15 @@ variable "jmt_selenium_nodes" {
 
   default = 0
 }
+
+variable "jmt_size" {
+  type        = map(number)
+  description = "The list of the different size available on Scaleway"
+
+  default     = {
+    "DEV1-S"    = 0.01,
+    "DEV1-M"    = 0.02,
+    "DEV1-L"    = 0.04,
+    "DEV1-XL"   = 0.06
+  }
+}

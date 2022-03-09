@@ -33,3 +33,8 @@ resource "scaleway_instance_server" "jmt_instance" {
 output "jmt_ip_addresses" {
   value = [for ip in scaleway_instance_ip.jmt_ip : ip.address]
 }
+
+# We print the price of the deployment
+output "price" {
+  value = join(" ",[tostring(var.jmt_replicas_per_stack * var.jmt_stacks * var.jmt_size[var.jmt_instance_size]),"€/h"])
+}
