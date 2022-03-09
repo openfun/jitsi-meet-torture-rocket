@@ -6,7 +6,7 @@ bootstrap: ## Bootstrap the Jitsi-Meet-torture project
 	cp env.dist env
 
 build: ## Build the Jitsi-Meet-torture image with the specified configuration
-ifneq (${shell scw instance image list | grep jmt-image | cut -d " " -f1},)
+ifneq (${shell ./bin/scaleway-cli instance image list | grep jmt-image | cut -d " " -f1},)
 	make destroy
 endif
 ifneq ($(wildcard ./docker/.env),)
