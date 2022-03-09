@@ -2,8 +2,8 @@
     "builders": [
         {
             "server_name": "jmt-temporary-build",
-            "image_name": "jmt-image",
-            "snapshot_name": "jmt-snapshot",
+            "image_name": "{{user `IMAGE_NAME`}}",
+            "snapshot_name": "{{user `IMAGE_NAME`}}-snapshot",
             "type": "scaleway",
             "image": "debian_bullseye",
             "zone": "fr-par-1",

@@ -7,6 +7,13 @@ variable "jmt_instance_size" {
   default = "DEV1-S"
 }
 
+variable "jmt_image_name" {
+  type        = string
+  description = "Name of the image created by Packer"
+
+  default = "jmt-image"
+}
+
 variable "jmt_conferences" {
   type        = number
   description = "The number of different JMT conferences"

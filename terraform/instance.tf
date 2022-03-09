@@ -1,6 +1,6 @@
 # We fetch the ID of the image that was built with Packer
 data "scaleway_instance_image" "jmt_image" {
-  name = "jmt-image"
+  name = var.jmt_image_name
 }
 
 # We create one IP address for each instance that we will
