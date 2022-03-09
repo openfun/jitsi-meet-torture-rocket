@@ -18,4 +18,4 @@ COPY --from=build /jitsi-meet-torture /jitsi-meet-torture
 
 WORKDIR /jitsi-meet-torture
 
-ENTRYPOINT ["./scripts/malleus.sh", "--debug"]
+ENTRYPOINT ["./scripts/malleus.sh"]
