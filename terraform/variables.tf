@@ -1,3 +1,15 @@
+variable "jmt_size" {
+  type        = map(number)
+  description = "The list of the different size available on Scaleway"
+
+  default     = {
+    "DEV1-S"    = 0.01,
+    "DEV1-M"    = 0.02,
+    "DEV1-L"    = 0.04,
+    "DEV1-XL"   = 0.06
+  }
+}
+
 variable "jmt_instance_size" {
   type        = string
   description = "The size of the Scaleway instances to use for the JMT instances"
@@ -35,27 +47,6 @@ variable "jmt_participants_per_instance" {
   default = 2
 }
 
-variable "jmt_stacks" {
-  type        = number
-  description = "The number of stacks of JMT instances to deploy"
-
-  default = var.jmt_conferences
-}
-
-variable "jmt_instances_per_stack" {
-  type        = number
-  description = "The number of JMT instances per stack to deploy"
-
-  default = ceil(var.jmt_participants_per_conference / var.jmt_participants_per_instance)
-}
-
-variable "jmt_selenium_nodes" {
-  type        = number
-  description = "The number of selenium nodes for the JMT tests"
-
-  default = var.jmt_participants_per_instance
-}
-
 variable "jmt_room_prefix" {
   type        = string
   description = "The prefix of the rooms for the JMT tests"
@@ -63,14 +54,8 @@ variable "jmt_room_prefix" {
   default = "scalingteam"
 }
 
-variable "jmt_size" {
-  type        = map(number)
-  description = "The list of the different size available on Scaleway"
-
-  default     = {
-    "DEV1-S"    = 0.01,
-    "DEV1-M"    = 0.02,
-    "DEV1-L"    = 0.04,
-    "DEV1-XL"   = 0.06
-  }
+locals {
+  jmt_stacks = var.jmt_conferences
+  jmt_instances_per_stack = ceil(var.jmt_participants_per_conference / var.jmt_participants_per_instance)
+  jmt_selenium_nodes = var.jmt_participants_per_instance
 }
