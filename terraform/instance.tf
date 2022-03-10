@@ -37,5 +37,5 @@ output "jmt_ip_addresses" {
 
 # We print the price of the deployment
 output "price" {
-  value = join(" ", [tostring(local.jmt_instances_per_stack * local.jmt_stacks * var.jmt_size[var.jmt_instance_size]), "€/h"])
+  value = join(" ", [tostring(ceil(local.jmt_instances_per_stack * local.jmt_stacks * var.jmt_size[var.jmt_instance_size] * 1000) / 1000), "€/h"])
 }
