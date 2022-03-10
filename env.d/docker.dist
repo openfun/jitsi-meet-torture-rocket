@@ -6,7 +6,6 @@ MALLEUS_AUDIO_SENDERS=1
 MALLEUS_SENDERS_PER_NODE=1
 MALLEUS_RECEIVERS_PER_NODE=1
 MALLEUS_DURATION=600
-MALLEUS_ROOM_NAME_PREFIX=loadtest
 MALLEUS_INSTANCE_URL=https://meet.jit.si
 MALLEUS_USE_NODE_TYPES=false
 MALLEUS_USE_LOAD_TEST=false
@@ -15,5 +14,6 @@ MALLEUS_SWITCH_SPEAKERS=false
 MALLEUS_USE_STAGE_VIEW=false
 MALLEUS_HUB_URL=http://selenium-hub:4444/wd/hub
 
-## The variable MALLEUS_CONFERENCES is overriden with terraform variables
+## The following variables are overriden with terraform variables
 MALLEUS_CONFERENCES=2
+MALLEUS_ROOM_NAME_PREFIX=test

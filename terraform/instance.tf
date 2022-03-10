@@ -21,11 +21,11 @@ resource "scaleway_instance_server" "jmt_instance" {
   # Configuration options of the instance with cloud-init
   # are described on https://cloudinit.readthedocs.io/en/latest
   user_data = {
-    cloud-init = templatefile("${path.module}/cloud-init.sh", { 
-        stack = count.index % local.jmt_stacks
-        room_prefix = var.jmt_room_prefix
-        selenium_nodes = local.jmt_selenium_nodes
-        participants_per_instance = var.jmt_participants_per_instance
+    cloud-init = templatefile("${path.module}/cloud-init.sh", {
+      stack                     = count.index % local.jmt_stacks
+      room_prefix               = var.jmt_room_prefix
+      selenium_nodes            = local.jmt_selenium_nodes
+      participants_per_instance = var.jmt_participants_per_instance
     })
   }
 }
@@ -37,5 +37,5 @@ output "jmt_ip_addresses" {
 
 # We print the price of the deployment
 output "price" {
-  value = join(" ",[tostring(var.jmt_replicas_per_stack * var.jmt_stacks * var.jmt_size[var.jmt_instance_size]),"€/h"])
+  value = join(" ", [tostring(local.jmt_instances_per_stack * local.jmt_stacks * var.jmt_size[var.jmt_instance_size]), "€/h"])
 }

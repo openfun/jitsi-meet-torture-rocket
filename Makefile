@@ -11,16 +11,16 @@ endif
 ifneq ($(wildcard ./env.d/docker),)
 	./bin/packer build -var SCALEWAY_INSTANCE_TYPE=${SCALEWAY_INSTANCE_TYPE} -var IMAGE_NAME=${IMAGE_NAME} packer.json
 else 
-	@echo "ERROR : The file env.d/docker doesn't exist."
+	@echo "ERROR: The file env.d/docker doesn't exist."
 endif
 
 apply: ## Apply to terraform to deploy ressources and launch tests
 	./bin/terraform apply -parallelism=${TF_OPERATIONS_PARALLELISM}
 	
-encrypt_key: ## Encrypt the secret key
+encrypt-key: ## Encrypt the secret key
 	gpg --symmetric --armor --batch --passphrase="${SECRET_GPG_PASSPHRASE}" --output packer/.ssh/secrets.key.gpg packer/.ssh/id_ed25519
 
-decrypt_key: ## Decrypt the secret key
+decrypt-key: ## Decrypt the secret key
 	gpg --decrypt --batch --passphrase="${SECRET_GPG_PASSPHRASE}" packer/.ssh/secrets.key.gpg > packer/.ssh/id_ed25519
 
 destroy-images: ## Delete the images created 
