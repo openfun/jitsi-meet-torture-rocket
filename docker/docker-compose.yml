@@ -21,7 +21,7 @@ services:
     depends_on:
       - selenium-hub
     env_file:
-      - .env
+      - ../env.d/docker
   # selenium-exporter:
   #   image: wakeful/selenium-grid-exporter
   #   container_name: selenium-exporter

@@ -4,4 +4,4 @@ set -eo pipefail
 # Run Scaleway-cli commands in the Scaleway docker container via docker compose
 # shellcheck disable=SC2068
 DOCKER_USER="$(id -u):$(id -g)" \
-docker-compose run --rm scaleway-cli "$@"
+    docker-compose run --rm scaleway-cli "$@"

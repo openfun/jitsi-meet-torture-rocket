@@ -2,8 +2,8 @@
     "builders": [
         {
             "server_name": "jmt-temporary-build",
-            "image_name": "jmt-image",
-            "snapshot_name": "jmt-snapshot",
+            "image_name": "{{user `IMAGE_NAME`}}",
+            "snapshot_name": "{{user `IMAGE_NAME`}}-snapshot",
             "type": "scaleway",
             "image": "debian_bullseye",
             "zone": "fr-par-1",
@@ -23,6 +23,11 @@
             "type": "file",
             "source": "/docker",
             "destination": "/root/docker"
+        },
+        {
+            "type": "file",
+            "source": "/env.d",
+            "destination": "/root/env.d"
         },
         {
             "type": "shell",

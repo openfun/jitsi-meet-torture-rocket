@@ -1,4 +1,9 @@
-docker/.env
-env
-packer/.ssh/id_ed25519
+# Environment variables
+env.d/terraform
+env.d/docker
+
+# Terraform
 terraform/.terraform
+
+# Packer
+packer/.ssh/id_ed25519

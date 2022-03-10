@@ -4,16 +4,17 @@ services:
 
   packer:
     image: hashicorp/packer:1.7.10
-    env_file: ./env
+    env_file: ./env.d/terraform
     user: ${DOCKER_USER:-1000}
     working_dir: /app
     volumes:
       - ./packer:/app
       - ./docker:/docker
+      - ./env.d/docker:/env.d/docker
 
   terraform:
     image: hashicorp/terraform:0.15.3
-    env_file: ./env
+    env_file: ./env.d/terraform
     user: ${DOCKER_USER:-1000}
     working_dir: /app
     volumes:
@@ -21,5 +22,5 @@ services:
 
   scaleway-cli:
     image: scaleway/cli
-    env_file: ./env
+    env_file: ./env.d/terraform
     user: ${DOCKER_USER:-1000}

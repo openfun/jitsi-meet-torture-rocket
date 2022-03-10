@@ -1,6 +1,6 @@
-# jitsi-meet-torture-docker
+# Jitsi-Meet-Torture Rocket
 
-This repository aims at simplifying the use of jitsi-meet-torture, specifically for load testing. A selenium hub is created, so that multiple connections, with or without video/audio, can be made to given jitsi instance.
+This repository aims at simplifying the use of [Jitsi-Meet-Torture](https://github.com/jitsi/jitsi-meet-torture), specifically for load testing. A selenium hub is created, so that multiple connections, with or without video/audio, can be made to a given Jitsi instance.
 
 ## Prerequisite
 
@@ -21,12 +21,13 @@ $ docker-compose --version
 This repository is composed of three parts:
 
 - A [Docker](https://www.docker.com) project to manipulate the [Jitsi-Meet-Torture](https://github.com/jitsi/jitsi-meet-torture) repository.
+Before running the hub, you must create an env file. It is recommended to copy the `env.d/docker.dist` file with `cp env.d/docker.dist env.d/docker`, and then modify the variables as needed.
 
-- A [Packer](https://www.packer.io) project, whose goal is to build an image with docker and docker-compose on it.
+- A [Packer](https://www.packer.io) project, whose goal is to build an image with docker and docker-compose on it and with pre-installed Jitsi-Meet-Torture.
 
-- A [Terraform](https://www.terraform.io/) project which deploys the docker project on the image for multiple instances, and launches the tests.
+- A [Terraform](https://www.terraform.io/) project which deploys the docker project on the image on multiple instances, and launches the tests.
 
-We use [Scaleway](https://www.scaleway.com/) as the cloud provider, but PRs are welcome to add other cloud providers. We also use the [Scaleway CLI](https://github.com/scaleway/scaleway-cli), which allows us to control deletion and creation of jmt instances.
+We use [Scaleway](https://www.scaleway.com/) as the cloud provider, but PRs are welcome to add other cloud providers. We also use the [Scaleway CLI](https://github.com/scaleway/scaleway-cli), which allows us to control deletion and creation of Jitsi-Meet-Torture instances.
 
 ## Getting started
 
@@ -34,34 +35,22 @@ We use [Scaleway](https://www.scaleway.com/) as the cloud provider, but PRs are 
 
 To use the Packer project, you will need an SSH key. There are two commands to manage encryption of the private key. We use [GnuPG](https://gnupg.org) for encryption.
 
-- Execute: ```make encrypt_key```to encrypt the secret key with the passphrase you specified as an environnement variable.
-- Execute: ```make decrypt_key```to decrypt the secret key from secrets.key.gpg.
+- Launch `make encrypt-key` to encrypt the secret key with the passphrase you specified as an environnement variable.
+- Launch `make decrypt-key` to decrypt the secret key from the `secrets.key.gpg` file.
 
 ### Environment variables
 
-Before running the hub, you need to provide the required environnement variables to authentificate on Scaleway, provide the GPG key and the size of the tests you want to perform.
-
-You can initialize the `.env` file by executing the following command:
-
-```
-make bootstrap
-```
-
-Then, edit this file with your credentials and the values you want for the tests.
-
-- `TF_VAR_number_of_selenium_node` defines the number of selenium nodes which depends on the size of the tests you want to perform. One selenium node is equivalent to one participant in a conference.
-
-- `SCALEWAY_INSTANCE_TYPE` defines the size of the JMT image you want to use. You can use either bigger or smaller instances on Scaleway. A Dev-S size is equivalent to two participants.
+Before launching the tests, you need to provide the required environment variables to authentificate on Scaleway and the GPG key. You may also edit the environment variables to deit the configuration.
 
 ### Run
 
 To run the project, execute the following command:
 
-```
+```bash
 make build
 ```
 
-This command makes sure the image you are trying to create isn't already created. If so, the image is deleted before building.
+This command makes sure the image you are trying to create isn't already created. If so, the image is deleted before the build.
 
 ## Monitoring (with Prometheus)
 
@@ -78,7 +67,7 @@ To enable it, just uncomment the corresponding lines in the docker-compose file.
 
 ## Cleaning
 
-If you want to delete the image and the snapshot created, you can execute the following command :
+If you want to delete the created image and the snapshot, you can execute the following command:
 
 ```
 make destroy

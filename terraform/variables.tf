@@ -1,48 +1,68 @@
+variable "jmt_size" {
+  type        = map(number)
+  description = "The prices of the different sizes available on Scaleway"
+
+  # Available sizes with their corresponding prices are described 
+  # on https://www.scaleway.com/en/pricing/
+  default = {
+    "DEV1-S"  = 0.01
+    "DEV1-M"  = 0.02
+    "DEV1-L"  = 0.04
+    "DEV1-XL" = 0.06
+    "GP1-XS"  = 0.084
+    "GP1-S"   = 0.17
+    "GP1-M"   = 0.34
+    "GP1-L"   = 0.66
+    "GP1-XL"  = 1.4
+  }
+}
+
 variable "jmt_instance_size" {
   type        = string
   description = "The size of the Scaleway instances to use for the JMT instances"
 
   # Available sizes with their corresponding prices are described 
   # on https://www.scaleway.com/en/pricing/
-  default = ""
+  default = "DEV1-S"
 }
 
-variable "jmt_replicas_per_stack" {
-  type        = number
-  description = "The number of JMT instances per stack to deploy"
+variable "jmt_image_name" {
+  type        = string
+  description = "Name of the image created by Packer"
 
-  default = 5
+  default = "jmt-image"
 }
 
-variable "jmt_stacks" {
+variable "jmt_conferences" {
   type        = number
-  description = "The number of stacks of JMT instances to deploy"
+  description = "The number of different JMT conferences"
 
-  default = 18
+  default = 1
+}
+
+variable "jmt_participants_per_conference" {
+  type        = number
+  description = "The number of JMT participants in each conference"
+
+  default = 2
+}
+
+variable "jmt_participants_per_instance" {
+  type        = number
+  description = "The number of JMT participants per instance (to be adapted with instance size)"
+
+  default = 2
 }
 
 variable "jmt_room_prefix" {
   type        = string
   description = "The prefix of the rooms for the JMT tests"
 
-  default = "scalingteam"
+  default = "test"
 }
 
-variable "jmt_selenium_nodes" {
-  type        = number
-  description = "The number of selenium nodes for the JMT tests"
-
-  default = 0
-}
-
-variable "jmt_size" {
-  type        = map(number)
-  description = "The list of the different size available on Scaleway"
-
-  default     = {
-    "DEV1-S"    = 0.01,
-    "DEV1-M"    = 0.02,
-    "DEV1-L"    = 0.04,
-    "DEV1-XL"   = 0.06
-  }
+locals {
+  jmt_stacks              = var.jmt_conferences
+  jmt_instances_per_stack = ceil(var.jmt_participants_per_conference / var.jmt_participants_per_instance)
+  jmt_selenium_nodes      = var.jmt_participants_per_instance
 }
