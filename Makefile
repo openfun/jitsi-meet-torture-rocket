@@ -1,4 +1,7 @@
-include env.d/terraform
+ifneq (,$(wildcard ./env.d/terraform))
+    include env.d/terraform
+    export
+endif
 
 bootstrap: ## Bootstrap the Jitsi-Meet-torture project
 	cp env.d/docker.dist env.d/docker
