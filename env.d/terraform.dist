@@ -26,6 +26,11 @@ NUMBER_PARTICIPTANTS_PER_INSTANCE=2
 # The room pattern will be $ROOM_PREFIX$N-0, where $N is the stack number
 ROOM_PREFIX=test
 
+# The starting time (Europe/Paris timezone) of JMT tests
+# Format is HH:MM
+# If empty, tests are launched at startup
+SCHEDULED_START_TIME=
+
 # Terraform JMT variables
 TF_VAR_jmt_instance_size=$SCALEWAY_INSTANCE_TYPE
 TF_VAR_jmt_conferences=$NUMBER_CONFERENCES
@@ -33,6 +38,7 @@ TF_VAR_jmt_participants_per_conference=$NUMBER_PARTICIPANTS_PER_CONFERENCE
 TF_VAR_jmt_participants_per_instance=$NUMBER_PARTICIPTANTS_PER_INSTANCE
 TF_VAR_jmt_image_name=$IMAGE_NAME
 TF_VAR_jmt_root_prefix=$ROOM_PREFIX
+TF_VAR_jmt_scheduled_start_time=$SCHEDULED_START_TIME
 
 # Terraform application variable. If you want to create all instances at the same time,
 # this should equal NUMBER_CONFERENCES * NUMBER_PARTICIPANTS_PER_CONFERENCE / NUMBER_PARTICIPTANTS_PER_INSTANCE

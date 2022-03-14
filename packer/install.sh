@@ -1,7 +1,12 @@
 #!/bin/sh
 
-# Install Docker
+# Configure scheduling
 apt update
+apt -y install at
+timedatectl set-timezone Europe/Paris
+chmod +x /root/start.sh
+
+# Install Docker
 apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/docker.gpg --import
 chmod 644 /etc/apt/trusted.gpg.d/docker.gpg

@@ -26,6 +26,7 @@ resource "scaleway_instance_server" "jmt_instance" {
       room_prefix               = var.jmt_room_prefix
       selenium_nodes            = local.jmt_selenium_nodes
       participants_per_instance = var.jmt_participants_per_instance
+      scheduled_start_time      = var.jmt_scheduled_start_time
     })
   }
 }

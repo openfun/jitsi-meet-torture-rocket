@@ -21,6 +21,11 @@
         },
         {
             "type": "file",
+            "source": "/app/start.sh",
+            "destination": "/root/start.sh"
+        },
+        {
+            "type": "file",
             "source": "/docker",
             "destination": "/root/docker"
         },

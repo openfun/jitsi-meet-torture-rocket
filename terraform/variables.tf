@@ -61,6 +61,13 @@ variable "jmt_room_prefix" {
   default = "test"
 }
 
+variable "jmt_scheduled_start_time" {
+  type        = string
+  description = "The starting time (format is HH:MM) of JMT tests; if empty, tests are launched at startup"
+
+  default = ""
+}
+
 locals {
   jmt_stacks              = var.jmt_conferences
   jmt_instances_per_stack = ceil(var.jmt_participants_per_conference / var.jmt_participants_per_instance)
