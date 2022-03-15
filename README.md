@@ -42,15 +42,43 @@ To use the Packer project, you will need an SSH key. There are two commands to m
 
 Before launching the tests, you need to provide the required environment variables to authentificate on Scaleway and the GPG key. You may also edit the environment variables to deit the configuration.
 
-### Run
+### Build
 
-To run the project, execute the following command:
+To build the image, execute the following command:
 
 ```bash
 make build
 ```
 
 This command makes sure the image you are trying to create isn't already created. If so, the image is deleted before the build.
+
+### Run
+
+To apply the terraform configuration and launch the tests, you can execute the following command:
+
+```
+make apply
+```
+
+### Cleaning
+
+If you want to delete the created image and the snapshot, you can execute the following command:
+
+```
+make destroy-images
+```
+
+You can also clean the terraform ressources with:
+
+```
+make destroy-terraform
+```
+
+You can even do both with:
+
+```
+make destroy
+```
 
 ## Monitoring (with Prometheus)
 
@@ -64,11 +92,3 @@ Name | Description
 `selenium_grid_up`|boolean that indicates if the hub is up
 
 To enable it, just uncomment the corresponding lines in the docker-compose file. Metrics are exported on port `8080` and on path `/metrics`.
-
-## Cleaning
-
-If you want to delete the created image and the snapshot, you can execute the following command:
-
-```
-make destroy
-```
