@@ -1,3 +1,6 @@
+# Random
+.DS_Store
+
 # Environment variables
 env.d/terraform
 env.d/docker
