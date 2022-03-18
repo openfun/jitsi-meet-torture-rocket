@@ -37,7 +37,7 @@ TF_VAR_jmt_conferences=$NUMBER_CONFERENCES
 TF_VAR_jmt_participants_per_conference=$NUMBER_PARTICIPANTS_PER_CONFERENCE
 TF_VAR_jmt_participants_per_instance=$NUMBER_PARTICIPTANTS_PER_INSTANCE
 TF_VAR_jmt_image_name=$IMAGE_NAME
-TF_VAR_jmt_root_prefix=$ROOM_PREFIX
+TF_VAR_jmt_room_prefix=$ROOM_PREFIX
 TF_VAR_jmt_scheduled_start_time=$SCHEDULED_START_TIME
 
 # Terraform application variable. If you want to create all instances at the same time,
