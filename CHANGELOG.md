@@ -15,5 +15,6 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - Docker project to launch `jitsi-meet-torture` in a containerized environment
 - Documentation of tests done using our infrastructure
 - Add quick load tests that have not been explored in detail
+- Documentation on tests for Octo
 
 [Unreleased]: https://github.com/openfun/jitsi-meet-torture-rocket
