@@ -13,5 +13,6 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - Terraform project to launch several `jitsi-meet-torture` instances
 - Packer project to create a `jitsi-meet-torture` image
 - Docker project to launch `jitsi-meet-torture` in a containerized environment
+- Documentation of tests done using our infrastructure
 
 [Unreleased]: https://github.com/openfun/jitsi-meet-torture-rocket
