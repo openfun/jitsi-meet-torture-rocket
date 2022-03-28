@@ -5,8 +5,8 @@ SCW_DEFAULT_PROJECT_ID=
 SCW_DEFAULT_ORGANIZATION_ID=
 
 # Credentials declaration for the s3 bucket backend
-AWS_ACCESS_KEY_ID=$SCW_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY=$SCW_SECRET_KEY
+AWS_ACCESS_KEY_ID=${SCW_ACCESS_KEY}
+AWS_SECRET_ACCESS_KEY=${SCW_SECRET_KEY}
 
 # Passphrase for the private KEY
 SECRET_GPG_PASSPHRASE=
@@ -23,7 +23,7 @@ NUMBER_PARTICIPANTS_PER_CONFERENCE=4
 NUMBER_PARTICIPTANTS_PER_INSTANCE=2
 
 # Room prefix for test conferences
-# The room pattern will be $ROOM_PREFIX$N-0, where $N is the stack number
+# The room pattern will be ${ROOM_PREFIX}${N}-0, where N is the stack number
 ROOM_PREFIX=test
 
 # The starting time (Europe/Paris timezone) of JMT tests
@@ -32,13 +32,13 @@ ROOM_PREFIX=test
 SCHEDULED_START_TIME=
 
 # Terraform JMT variables
-TF_VAR_jmt_instance_size=$SCALEWAY_INSTANCE_TYPE
-TF_VAR_jmt_conferences=$NUMBER_CONFERENCES
-TF_VAR_jmt_participants_per_conference=$NUMBER_PARTICIPANTS_PER_CONFERENCE
-TF_VAR_jmt_participants_per_instance=$NUMBER_PARTICIPTANTS_PER_INSTANCE
-TF_VAR_jmt_image_name=$IMAGE_NAME
-TF_VAR_jmt_room_prefix=$ROOM_PREFIX
-TF_VAR_jmt_scheduled_start_time=$SCHEDULED_START_TIME
+TF_VAR_jmt_instance_size=${SCALEWAY_INSTANCE_TYPE}
+TF_VAR_jmt_conferences=${NUMBER_CONFERENCES}
+TF_VAR_jmt_participants_per_conference=${NUMBER_PARTICIPANTS_PER_CONFERENCE}
+TF_VAR_jmt_participants_per_instance=${NUMBER_PARTICIPTANTS_PER_INSTANCE}
+TF_VAR_jmt_image_name=${IMAGE_NAME}
+TF_VAR_jmt_room_prefix=${ROOM_PREFIX}
+TF_VAR_jmt_scheduled_start_time=${SCHEDULED_START_TIME}
 
 # Terraform application variable. If you want to create all instances at the same time,
 # this should equal NUMBER_CONFERENCES * NUMBER_PARTICIPANTS_PER_CONFERENCE / NUMBER_PARTICIPTANTS_PER_INSTANCE

@@ -17,4 +17,8 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - Add quick load tests that have not been explored in detail
 - Documentation on tests for Octo
 
+### Fixed
+
+- Inclusion of variables in the env variables
+
 [Unreleased]: https://github.com/openfun/jitsi-meet-torture-rocket
