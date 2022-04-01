@@ -2,7 +2,7 @@
 
 ## Context 
 
-We want to reproduce a test similar to [Load Test n°4](../2022-03-11/Load-test-2022-03-11.md), but this time with bigger jitsi-meet-torture instances, as we saw in [Quick test n°1](../quick_tests/2022-03-16/Quick-test-2022-03-16.md), because the instances we used in Load test n°4 limited the test.
+We want to reproduce a test similar to [Load Test n°4](../2022-03-11-one-conference-limit/Load-test-2022-03-11-one-conference-limit.md), but this time with bigger jitsi-meet-torture instances, as we saw in [Quick test n°1](../quick_tests/2022-03-16-JMT-instances-best-size/Quick-test-2022-03-16-JMT-instances-best-size.md), because the instances we used in Load test n°4 limited the test.
 
 ## Description of the infrastucture
 
@@ -73,7 +73,7 @@ Even if we arrive soon at limit of JVB, it is still able to handle connections b
 
 There is a lot of cpu throtthling to handle limited cpu. Ram is way under the limit, and bandwidth too. CPU is what limits the JVB.
 
-This shows that client was indeed limiting for [Load Test n°4](../2022-03-11/Load-test-2022-03-11.md).
+This shows that client was indeed limiting for [Load Test n°4](../2022-03-11-one-conference-limit/Load-test-2022-03-11-one-conference-limit.md).
 
 When clients leave, CPU levels fall as well, so it could be a good indicator for hpa. The same can be said of bandwidth, but as XS machines allow hundreds of MB of bandwidth, it is not a limit in the same way as cpu.
 

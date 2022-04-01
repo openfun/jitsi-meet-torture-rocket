@@ -3,7 +3,7 @@
 ## Context 
 
 This test aims at testing the Octo strategy RegionBased, with only one region: "fr-par".
-After choosing to use Octo in [Load Test n°7](../2022-03-18/Load-test-2022-03-18.md), this seems to be the strategy that is most adapted to production.
+After choosing to use Octo in [Load Test n°7](../2022-03-18-with-without-OCTO/Load-test-2022-03-18-with-without-OCTO.md), this seems to be the strategy that is most adapted to production.
 
 ## Description of the infrastucture
 

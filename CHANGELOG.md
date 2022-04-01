@@ -17,6 +17,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 - Add quick load tests that have not been explored in detail
 - Documentation on tests for Octo
 
+### Changed
+
+- Modify load test directory names for better visualization
+
 ### Fixed
 
 - Inclusion of variables in the env variables

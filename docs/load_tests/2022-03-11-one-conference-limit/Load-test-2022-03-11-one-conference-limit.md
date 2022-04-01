@@ -4,7 +4,7 @@
 
 We want to test the maximum number of participants in one conference in Jitsi Meet. In the same time, we would like to explore the different metrics that are fetched on the infrastructure and be able to estimate the values of those metrics.
 
-This is in the context of first tests, that were limited because of the jitsi-meet-torture instance sizes. [Load test n°6](../2022-03-17/Load-test-2022-03-17.md) shows that with bigger torture instances, we reach a higher number of participants before video quality becomes poor.
+This is in the context of first tests, that were limited because of the jitsi-meet-torture instance sizes. [Load test n°6](../2022-03-17-one-conference-small-JVB-big-JMT-instance/Load-test-2022-03-17-one-conference-small-JVB-big-JMT-instance.md) shows that with bigger torture instances, we reach a higher number of participants before video quality becomes poor.
 
 ---
 
@@ -85,7 +85,7 @@ The RTT and Jitter aggregate metrics are too fluctuating to be quantified, but t
 
 About the other components of Jitsi, we learn that the CPU loads on the Jicofo and Prosody pods stay very low and constant during the entire test (it will not be the limiting factor). However, the RAM usage of these components seems to be linear in the number of participants, with a slope that is between 40 and 1500 times smaller than the slope of the JVB RAM usage linear approximation.
 
-Compared to the [Load Test n°3](../2022-02-24/Load-test-2022-02-24.md) (with numerous conferences), the slope of the linear approximation of the RAM usage appears to be 1.5 times higher and the slope of the linear approximation of the CPU load 2.8 times higher (note that the latter may be distorted because of the first point). We may interprete this result as the consequences of having more participants in conferences and therefore more streams sent to the clients.
+Compared to the [Load Test n°3](../2022-02-24-determine-metric-for-loadtest/Load-test-2022-02-24-determine-metric-for-loadtest.md) (with numerous conferences), the slope of the linear approximation of the RAM usage appears to be 1.5 times higher and the slope of the linear approximation of the CPU load 2.8 times higher (note that the latter may be distorted because of the first point). We may interprete this result as the consequences of having more participants in conferences and therefore more streams sent to the clients.
 
 ---
 
@@ -93,4 +93,4 @@ Compared to the [Load Test n°3](../2022-02-24/Load-test-2022-02-24.md) (with nu
 
 The maximum number of people that a conference can handle with 10 audio and video streams seems to be **between 70 and 80 participants**, with disturbance that begin to append from 70 participants.
 
-However, as stated in the context, this disturbance is caused by torture limitations, and [Load test n°6](../2022-03-17/Load-test-2022-03-17.md) is more correct to see how many participants a conference can handle.
+However, as stated in the context, this disturbance is caused by torture limitations, and [Load test n°6](../2022-03-17-one-conference-small-JVB-big-JMT-instance/Load-test-2022-03-17-one-conference-small-JVB-big-JMT-instance.md) is more correct to see how many participants a conference can handle.

@@ -2,7 +2,7 @@
 
 ## Context 
 
-We want to reproduce a test similar to [Load Test n°4](../2022-03-11/Load-test-2022-03-11.md), but this time with smaller JVBs on the same sized node. We want to see if we reach the same limit, if there are phenomenas that show that multiple JVBs are better than one...
+We want to reproduce a test similar to [Load Test n°4](../2022-03-11-one-conference-limit/Load-test-2022-03-11-one-conference-limit.md), but this time with smaller JVBs on the same sized node. We want to see if we reach the same limit, if there are phenomenas that show that multiple JVBs are better than one...
 
 ## Description of the infrastucture
 
@@ -47,7 +47,7 @@ The number of octo endpoints have been tracked down thanks to a jitsi prometheus
 
 We observe that we arrive very soon at the limit in cpu per pod.
 
-In [Load Test n°4](../2022-03-11/Load-test-2022-03-11.md), when there was a drop in performance, only 2 cores where used, and there were around 75 participants. Here, we use all 4 cpus at 65 participants. Thus, multiple JVB take more resources, and limit jitsi more.
+In [Load Test n°4](../2022-03-11-one-conference-limit/Load-test-2022-03-11-one-conference-limit.md), when there was a drop in performance, only 2 cores where used, and there were around 75 participants. Here, we use all 4 cpus at 65 participants. Thus, multiple JVB take more resources, and limit jitsi more.
 
 This is due to the fact that having multiple peole in the same conference on multiple JVBs (thanks to Octo) multiplies the number of connections needed and creates more stress on the JVBs, as each participant will contact all JVBs where there are people with cameras and audio turned on.
 
@@ -59,4 +59,4 @@ Multiple JVBs create more demand in resources because of Octo connections. Thus 
 
 We have to test with JVBs that have exactly the number of cores that the JVBs can reach, to see if it is the optimal configuration.
 
-However, [Quick test n°1](../quick_tests/2022-03-16/Quick-test-2022-03-16.md) showed that jitsi-meet-torture instances were limiting, so the number of maximum participants with 4 JVBs is higher than what this test shows. But the higher demand in resources with multiple JVBs remains true.
+However, [Quick test n°1](../quick_tests/2022-03-16-JMT-instances-best-size/Quick-test-2022-03-16-JMT-instances-best-size.md) showed that jitsi-meet-torture instances were limiting, so the number of maximum participants with 4 JVBs is higher than what this test shows. But the higher demand in resources with multiple JVBs remains true.
