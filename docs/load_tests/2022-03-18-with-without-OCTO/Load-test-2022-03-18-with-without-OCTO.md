@@ -96,7 +96,7 @@ Even if SingleBridge creates less messaging (we see that bandwidth is less used)
 
 With SplitBridge, the JVBs are more overloaded as a whole, but we don't have the risk of completely overloading one single JVB when others are doing fine.
 
-We have to keep in mind that Split Bridge is for dev purpose only, and [Load Test n°8](../2022-03-20/Load-test-2022-03-20.md) shows that RegionBased, which is for prod, mixes the two solution's best aspects.
+We have to keep in mind that Split Bridge is for dev purpose only, and [Load Test n°8](../2022-03-21-OCTO-strategy-RegionBased/Load-test-2022-03-21-OCTO-strategy-RegionBased.md) shows that RegionBased, which is for prod, mixes the two solution's best aspects.
 
 ## Conclusion
 

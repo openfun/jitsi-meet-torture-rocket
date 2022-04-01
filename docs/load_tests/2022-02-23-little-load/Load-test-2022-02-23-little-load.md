@@ -20,7 +20,7 @@ There is only one JVB node, running on a XS kubernetes node of scaleway.
 We asked for approximatively 10 friends to come and activate their camera and microphone
 in the same meeting.
 
-As an additionnal load, we strarted 15 internet browser tabs on 2 laptops which were
+As an additionnal load, we started 15 internet browser tabs on 2 laptops which were
 receiving audio and video.
 
 The test began at 3:30 PM (UTC) and stopped at 4:00 PM (UTC).
